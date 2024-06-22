@@ -1,0 +1,68 @@
+runsetting:
+    run_no: test1
+    number_detect_ind: 0
+    camera_calibration_ind: 0
+    edge_detection_ind: 1
+    circle_detection_ind: 1
+    robot_connection_ind: 0
+    robot_coordination_ind: 1
+    source_type: 0 #1: select by browser, 0: path
+    source_path: D:\Python\OCR\9points\Test1.bmp
+    
+image_processing:
+    order: ['BLUR','MASK','GRAY','THRESHOLD']
+    blur_ind: 1
+    ksize: 3
+    sigmaX: 0.1
+    gray_ind: 0
+    mask_ind: 0
+    mask_type: HSV
+    mask_lower_range: [0,0,0]  # Set the Lower range value of color in BGR
+    mask_upper_range: [100,70,255]
+    threshold_ind: 0
+    
+roi_detection:
+    largest_rect_ind: 1
+
+number_detection:
+    tesseract_ind: 1
+    tesseract_api_ind: 0    
+
+tesseract:
+    tesseract_exe_path: 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+    testdata_dir: "C:\\Program Files\\Tesseract-OCR\\tessdata"
+
+edge_detection:
+    calibration_ind: 1
+    canny_threshold: [2000, 4000]    
+    apertureSize: 5
+    canny_threshold_calc_ind: 1
+    connected_contour_ind: 1
+
+circle_detection: #cv2.HoughCircles(mat_image, cv2.HOUGH_GRADIENT, dp=1, minDist=int(mat_image.shape[0]/4), param1=50, param2=10, maxRadius=int(mat_image.shape[0]/4))
+    dp: 1
+    param1: 50
+    param2: 10
+    9points_calibration_ind: 1
+    9points_calibration_max_trial_no: 100
+    outliers_exclude_ind: 1
+    show_detected_circle_ind: 0
+    blur_ind: 1
+    blur_kernel_size: 5
+    blur_sigmaX: 0
+
+robot_coordination_ind:
+    source_type: 0 #0 is user manual input; 1 is reading from csv; 2 is from arguments
+    coordinate: [298,186]
+
+camera_calibration:
+    circles_detection_ind: 1
+    transform_parameters: 123
+    transform_parameters_path: D:\Python\OCR
+    robot_coordinates_input_type: 1 #0 is user manual input; 1 is reading from csv; 2 is from arguments
+    robot_coordinates_path: D:\Python\OCR\9points\robot_coordinates.csv    
+
+robot:
+    ip: 192.168.4.5
+    port: 9760
+    tcp_type: 'CLIENT'
